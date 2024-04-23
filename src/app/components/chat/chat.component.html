@@ -1,0 +1,13 @@
+<div>
+  <input
+    type="text"
+    [(ngModel)]="userMessage"
+    (keydown.enter)="send()"
+    placeholder="Type your message here"
+  />
+  <button (click)="send()">Send</button>
+</div>
+
+<div *ngFor="let response of responses">
+  <p>{{ response }}</p>
+</div>

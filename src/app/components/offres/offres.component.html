@@ -1,0 +1,29 @@
+<div class="container">
+    <h2>Liste des offres</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Description</th>
+          <th>Compétence Requise</th>
+          <th>Durée</th>
+          <th>Rémunération</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let offre of offres">
+          <td>{{ offre.titre }}</td>
+          <td>{{ offre.description }}</td>
+          <td>{{ offre.competenceRequise }}</td>
+          <td>{{ offre.duree }}</td>
+          <td>{{ offre.remuneration }}</td>
+          <td>
+            <button (click)="deleteOffre(offre.id)" class="btn btn-danger">Supprimer</button>
+            <button (click)="modifierOffre(offre.id)" class="btn btn-primary">Modifier</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="ajouterOffre()" class="btn btn-success">Ajouter une nouvelle offre</button>
+</div>

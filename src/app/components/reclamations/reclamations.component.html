@@ -1,0 +1,73 @@
+<div class="container">
+  <h2>Liste des réclamations</h2>
+
+  <!-- Search input field -->
+  <div class="col-lg-4 mb-5">
+    <input type="text" class="form-control" placeholder="Search by User ID" (input)="applyFilter($event)">
+  </div>
+
+  <!-- Filter dropdown/select -->
+  <div class="col-lg-4 mb-5">
+    <select class="form-control" (change)="applySort($event)">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+  </div>
+
+  <button class="btn btn-primary" (click)="exportToExcel()" >Export as Excel</button>
+  <table #reclamationsTable mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let reclamation">{{ reclamation.idRec }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let reclamation">{{ reclamation.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="etat">
+      <th mat-header-cell *matHeaderCellDef>État</th>
+      <td mat-cell *matCellDef="let reclamation">{{ reclamation.etat }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="userId">
+      <th mat-header-cell *matHeaderCellDef>User ID</th>
+      <td mat-cell *matCellDef="let reclamation">{{ getUserId(reclamation) }}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let reclamation">
+        <button (click)="deleteReclamation(reclamation.idRec)" class="btn btn-danger">Supprimer</button>
+        <button (click)="modifierReclamation(reclamation.idRec)" class="btn btn-primary">Modifier</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator
+    [length]="totalReclamations"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 25, 50]"
+    (page)="pageEvent($event)">
+  </mat-paginator>
+
+  <div class="container">
+    <h2>Statistics of Reclamations per User</h2>
+  
+    <ngx-charts-pie-chart
+  [results]="reclamationsPerUser"
+  [legend]="true"
+  [explodeSlices]="false"
+  [doughnut]="false">
+</ngx-charts-pie-chart>
+  </div>
+
+
+  
+
+</div>

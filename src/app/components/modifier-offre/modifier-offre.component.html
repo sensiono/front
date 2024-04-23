@@ -1,0 +1,26 @@
+<div class="container" *ngIf="offre">
+    <h2>Modifier l'offre</h2>
+    <form (submit)="modifierOffre()">
+        <div class="form-group">
+            <label for="titre">Titre:</label>
+            <input type="text" class="form-control" id="titre" name="titre" [(ngModel)]="offre.titre" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" name="description" [(ngModel)]="offre.description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="competenceRequise">Compétence Requise:</label>
+            <input type="text" class="form-control" id="competenceRequise" name="competenceRequise" [(ngModel)]="offre.competenceRequise" required>
+        </div>
+        <div class="form-group">
+            <label for="duree">Durée:</label>
+            <input type="text" class="form-control" id="duree" name="duree" [(ngModel)]="offre.duree" required>
+        </div>
+        <div class="form-group">
+            <label for="remuneration">Rémunération:</label>
+            <input type="number" class="form-control" id="remuneration" name="remuneration" [(ngModel)]="offre.remuneration" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+</div>

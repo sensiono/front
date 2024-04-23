@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="col-lg-12 mb-7">
+    <h2 class="font-size-6 mb-4">Ajouter une nouvelle réclamation</h2>
+    <form (submit)="saveReclamation()">
+      <div class="form-group">
+        <label for="description" class="font-size-4 font-weight-semibold text-black-2 mb-5 line-height-reset">Description:</label>
+        <textarea class="form-control h-px-144" id="description" name="description" [(ngModel)]="nouvelleReclamation.description" required></textarea>
+      </div>
+      <div class="col-lg-12 pt-4">
+        <button type="submit" class="btn btn-primary text-uppercase w-100 h-px-48">Ajouter</button>
+      </div>
+    </form>
+  </div>
+</div>

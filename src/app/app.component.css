@@ -1,0 +1,10 @@
+/* Assuming this is in the styles for the component containing the router-outlet */
+.router-outlet-wrapper {
+    padding: 20px; /* or whatever value suits your design */
+  }
+  
+  /* To target any immediate child components loaded into the router-outlet */
+  .router-outlet-wrapper > * {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
