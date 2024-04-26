@@ -8,6 +8,7 @@ import { ModifierReclamationComponent } from './components/modifier-reclamation/
 import { ReclamationsComponent } from './components/reclamations/reclamations.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { HomeComponent } from './components/home/home.component';
+import { AdminmainComponent } from './components/admin/adminmain/adminmain.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'ajouter-reclamation', component: AjoutReclamationComponent },
   { path: 'modifier-reclamation/:id', component: ModifierReclamationComponent },
   { path: 'chat', component: ChatComponent },
+  { path: 'admin', component:  AdminmainComponent },
 ];
 
 @NgModule({

@@ -17,6 +17,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatComponent } from './components/chat/chat.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AdminmainComponent } from './components/admin/adminmain/adminmain.component';
+import { AdminsidebarComponent } from './components/admin/adminsidebar/adminsidebar.component';
+import { AdminheaderComponent } from './components/admin/adminheader/adminheader.component';
 
 
 @NgModule({
@@ -30,6 +35,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     ModifierReclamationComponent,
     ChatComponent,
     HomeComponent,
+    HeaderComponent,
+    FooterComponent,
+    AdminmainComponent,
+    AdminsidebarComponent,
+    AdminheaderComponent,
+
 
   ],
   imports: [

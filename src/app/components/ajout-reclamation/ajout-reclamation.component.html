@@ -1,14 +1,42 @@
+<app-header></app-header>
+
 <div class="container">
   <div class="col-lg-12 mb-7">
     <h2 class="font-size-6 mb-4">Ajouter une nouvelle réclamation</h2>
-    <form (submit)="saveReclamation()">
+    <form
+      (ngSubmit)="saveReclamation(reclamationForm)"
+      #reclamationForm="ngForm" 
+    >
       <div class="form-group">
         <label for="description" class="font-size-4 font-weight-semibold text-black-2 mb-5 line-height-reset">Description:</label>
-        <textarea class="form-control h-px-144" id="description" name="description" [(ngModel)]="nouvelleReclamation.description" required></textarea>
+        <textarea
+          class="form-control h-px-144"
+          id="description"
+          name="description"
+          [(ngModel)]="nouvelleReclamation.description"
+          minlength="50" 
+          required 
+          (blur)="validateDescription()" 
+          [ngClass]="{'is-invalid': description.invalid && description.touched}"
+          #description="ngModel"
+        ></textarea>
+
+        <!-- Validation feedback for the 'description' field -->
+        <div *ngIf="description.invalid && description.touched" class="text-danger">
+          <span *ngIf="description.errors?.['required']">La description ne peut pas être vide.</span>
+          <span *ngIf="description.errors?.['minlength']">La description doit contenir au moins 50 caractères.</span>
+        </div>
       </div>
       <div class="col-lg-12 pt-4">
-        <button type="submit" class="btn btn-primary text-uppercase w-100 h-px-48">Ajouter</button>
+        <button
+          type="submit"
+          class="btn btn-primary text-uppercase w-100 h-px-48"
+          [disabled]="reclamationForm.invalid" 
+        >
+          Ajouter
+        </button>
       </div>
     </form>
   </div>
 </div>
+<app-footer></app-footer>

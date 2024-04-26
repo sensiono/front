@@ -10,10 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'Fkhademni';
   constructor(private router: Router) {}
-  navigateToAddReclamation(event: Event): void {
-    event.preventDefault(); // Prevent default link behavior
-    this.router.navigate(['/ajouter-reclamation']); // Navigate programmatically
-  }
+  
 
   
 
