@@ -124,7 +124,7 @@ export class ReclamationsComponent implements OnInit, AfterViewInit {
   }
 
   modifierReclamation(id: number): void {
-    this.router.navigate(['/admin/modifier-reclamation', id]);
+    this.router.navigate(['/modifier-reclamation', id]);
   }
 
   ajouterReclamation(): void {

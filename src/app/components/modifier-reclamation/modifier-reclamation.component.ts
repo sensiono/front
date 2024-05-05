@@ -53,22 +53,24 @@ export class ModifierReclamationComponent implements OnInit {
   }
 
   modifierReclamation(reclamationForm: NgForm): void {
-    if (reclamationForm.valid && this.reclamation) {
+    if (this.isAdmin && reclamationForm.valid && this.reclamation) {
+      // Only allow modification if user is admin
       this.reclamationService.updateReclamation(this.reclamation).subscribe({
         next: () => {
-          console.log('Reclamation updated successfully!');
           this.dialog.open(PopupComponent, { width: '400px' });
-          this.router.navigate(['/reclamations']);
+          this.router.navigate(['/admin/reclamations']); // Redirect to admin/reclamations
         },
         error: (error) => {
-          console.error('Error updating reclamation:', error);
+          console.error("Error updating reclamation:", error);
           if (error.status === 403) {
-            console.error("You do not have permission to update this reclamation");
-            this.router.navigate(['']); // Redirect to login if unauthorized
+            this.router.navigate(['']); // Redirect if unauthorized
+            console.error("permission denied:", error);
           }
-          
-        }
+        },
       });
+    } else {
+      console.warn("Only admins can modify reclamations."); // Warn non-admin users
+      this.router.navigate(['']);
     }
   }
 
