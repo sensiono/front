@@ -1,0 +1,20 @@
+/* In your global styles.css or a component-specific stylesheet */
+
+/* Ensure the body and html elements take up the full viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* Define the main container to be larger than the viewport */
+  .main-container {
+    width: 110%;
+    height: 110%;
+    overflow: auto; /* Allow scrolling if necessary */
+  }
+  
+  /* For demonstration: give the router-outlet a background color */
+  router-outlet {
+    background-color: lightgray; /* Just to visualize the area */
+  }
+  

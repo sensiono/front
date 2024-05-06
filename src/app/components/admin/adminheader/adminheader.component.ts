@@ -47,6 +47,7 @@ export class AdminheaderComponent implements OnInit {
       rememberMe: [false],
       confirmPassword: ['', Validators.required], // Ensure this is defined
       acceptTerms: [false, Validators.requiredTrue], // Ensure this is defined
+      role: ['', [Validators.required]],
     });
 
     this.loginForm = this.fb.group({

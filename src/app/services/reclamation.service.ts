@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Reclamation } from "../Models/reclamation/reclamation";
 import { AuthServiceService } from "./auth-service.service"; 
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,17 @@ export class ReclamationService {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthServiceService
+    private authService: AuthServiceService,
+    private toastr: ToastrService
   ) {}
 
   private getHeaders(): HttpHeaders {
     const jwt = localStorage.getItem('jwt'); // Retrieve JWT token
     if (!jwt) {
-      console.warn("JWT token is missing");
+      this.toastr.error(
+        'You must be logged in to file a claim.',
+        'Authentication Required'
+      ); // Show error message
     }
 
     return new HttpHeaders({

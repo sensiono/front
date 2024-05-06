@@ -3,11 +3,11 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #007bff;
+    background: #000000;
     color: white;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,7 +40,7 @@
   
   /* Chat Header */
   .chat-header {
-    background: #007bff;
+    background: #000000;
     color: white;
     padding: 10px;
     display: flex;
@@ -90,7 +90,7 @@
   }
   
   .send-button {
-    background: #007bff;
+    background: #000000;
     color: white;
     border: none;
     padding: 8px;

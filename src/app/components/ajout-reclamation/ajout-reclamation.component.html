@@ -36,7 +36,7 @@
       <button
         type="submit"
         class="btn btn-primary text-uppercase w-50 h-px-48"
-        [disabled]="reclamationForm.invalid"
+        [disabled]="!isAuthenticated || reclamationForm.invalid"
       >
         Submit Feedback
       </button>

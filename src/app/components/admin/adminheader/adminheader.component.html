@@ -377,6 +377,16 @@
           </div>           
           <!-- Registration Form -->
           <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+
+            <!-- User Role Dropdown -->
+            <div class="form-group">
+            <label for="role">Register as:</label>
+              <select class="form-control" formControlName="role" required>
+               <option value="" disabled>Select a role</option>
+               <option value="Etudiant">Etudiant</option>
+               <option value="Entreprise">Entreprise</option>
+              </select>
+             </div>
             <!-- Add Firstname Field -->
             <div class="form-group">
               <div class="group-img">

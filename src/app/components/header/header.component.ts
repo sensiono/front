@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
       rememberMe: [false],
       confirmPassword: ['', Validators.required], // Ensure this is defined
       acceptTerms: [false, Validators.requiredTrue], // Ensure this is defined
+      
     });
 
     this.loginForm = this.fb.group({

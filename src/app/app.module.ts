@@ -6,7 +6,6 @@ import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { RegisterComponent } from './register/register.component';
 
 import { OffreComponent } from './offre/offre.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -33,13 +32,11 @@ import { ChatBubbleComponent } from './components/chat-bubble/chat-bubble.compon
 @NgModule({
   declarations: [
     AppComponent, 
-    RegisterComponent,
     OffreComponent,
     ReclamationsComponent,
     AjoutReclamationComponent,
     ModifierReclamationComponent,
     PopupComponent,
-    RegisterComponent,
     HomeComponent,
     HeaderComponent,
     FooterComponent,
