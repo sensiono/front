@@ -48,8 +48,17 @@ export class AuthServiceService {
     return false; // If no role or user is not an admin
   }
 
+  
+
   // Check if the user is authenticated
   isUserAuthenticated(): boolean {
     return !!localStorage.getItem('jwt'); // Check if there's a JWT in local storage
   }
+
+  // Get the user's role from the JWT
+  getUserRole(): string | null {
+    const decodedJwt = this.getDecodedJwtData();
+    return decodedJwt?.role ?? null;
+  }
+
 }

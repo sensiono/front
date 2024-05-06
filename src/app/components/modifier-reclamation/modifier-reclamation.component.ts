@@ -58,7 +58,7 @@ export class ModifierReclamationComponent implements OnInit {
       this.reclamationService.updateReclamation(this.reclamation).subscribe({
         next: () => {
           this.dialog.open(PopupComponent, { width: '400px' });
-          this.router.navigate(['/admin/reclamations']); // Redirect to admin/reclamations
+          this.router.navigate(['/reclamations']); // Redirect to admin/reclamations
         },
         error: (error) => {
           console.error("Error updating reclamation:", error);

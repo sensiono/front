@@ -1,7 +1,8 @@
+// ChatBubbleService with optional JWT header
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ChatMessage } from 'src/app/Models/chat-bubble/ChatMessage'; // Correct import for the data model
+import { ChatMessage } from 'src/app/Models/chat-bubble/ChatMessage';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +12,24 @@ export class ChatBubbleService {
 
   constructor(private http: HttpClient) {}
 
-  // Accepts a ChatMessage object to send to the backend and returns an Observable of ChatMessage
+  private getHeaders(): HttpHeaders | undefined {
+    const jwt = localStorage.getItem('jwt'); // Retrieve JWT token
+    if (jwt) {
+      return new HttpHeaders({
+        Authorization: `Bearer ${jwt}`,
+        'Content-Type': 'application/json',
+      });
+    } else {
+      console.warn('No JWT found. Sending without Authorization header.');
+      return undefined; // Return undefined if JWT isn't available
+    }
+  }
+
+  // Method to send chat messages to the backend
   chatfct(chatMessage: ChatMessage): Observable<ChatMessage> {
-    return this.http.post<ChatMessage>(`${this.baseUrl}/respond`, chatMessage);
+    const headers = this.getHeaders(); // Get headers with/without JWT
+    return this.http.post<ChatMessage>(`${this.baseUrl}/respond`, chatMessage, {
+      headers,
+    });
   }
 }
