@@ -1,0 +1,36 @@
+<div class="card-container">
+  <div *ngFor="let item of allBlogs" class="card">
+    <mat-card>
+      <mat-card-header>
+        <!-- Display input fields for editing blog name -->
+        <input type="text" [(ngModel)]="item.name" *ngIf="item.editing" />
+        <!-- Display blog name when not in edit mode -->
+        <div *ngIf="!item.editing">
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ item.name }}</mat-card-title>
+          <mat-card-subtitle>Posted by: {{ item.postedBy }} | Posted On: {{ item.date | date:'medium' }}</mat-card-subtitle>
+        </div>
+      </mat-card-header>
+
+      <div class="card-content">
+        <!-- Display input fields for editing blog content -->
+        <textarea [(ngModel)]="item.content" *ngIf="item.editing"></textarea>
+        <!-- Display blog content when not in edit mode -->
+        <div *ngIf="!item.editing">{{ item.content }}</div>
+      </div>
+
+      <mat-card-actions>
+        <!-- Show Save and Cancel buttons when in edit mode -->
+        <button mat-button color="primary" *ngIf="item.editing" (click)="saveBlog(item)">Save</button>
+        <button mat-button color="warn" *ngIf="item.editing" (click)="cancelEdit(item)">Cancel</button>
+        <!-- Show Edit button when not in edit mode -->
+        <button mat-button color="primary" *ngIf="!item.editing" (click)="toggleEdit(item)">Edit</button>
+        <!-- Show other buttons as before -->
+        <button mat-raised-button color="primary">{{ item.likeCount }} <mat-icon>favorite</mat-icon></button>
+        <button mat-raised-button color="primary">{{ item.viewCount }} <mat-icon>remove_red_eye</mat-icon></button>
+        <button mat-raised-button color="primary" routerLink="/view-blog/{{item.id}}">View Blog</button>
+        <button mat-raised-button color="warn" (click)="deleteBlog(item.id)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
