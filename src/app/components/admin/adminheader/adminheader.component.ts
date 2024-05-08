@@ -93,6 +93,6 @@ export class AdminheaderComponent implements OnInit {
 
   navigateToAddReclamation(event: Event): void {
     event.preventDefault(); // Prevent default link behavior
-    this.router.navigate(['/ajouter-reclamation']); // Navigate programmatically
+    this.router.navigate(['/ajouter-reclamation']); 
   }
 }
