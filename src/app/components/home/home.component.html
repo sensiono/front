@@ -96,144 +96,44 @@
   </div>
   <!-- End Company Section -->
   <!-- Brand1Section Area -->
-  <!-- category Area -->
-  <!-- Category Area -->
-  <div class="pt-11 pt-lg-26 pb-lg-16" data-aos="fade-left" data-aos-duration="800" data-aos-delay="400" data-aos-once="true">
-    <div class="container">
-      <!-- Section Top -->
-      <div class="row align-items-center pb-14">
-        <!-- Section Title -->
-        <div class="col-12 col-lg-6">
-          <div class="text-center text-lg-left mb-13 mb-lg-0">
-            <h2 class="font-size-9 font-weight-bold">Explore by category</h2>
-          </div>
+<!-- HTML -->
+
+<!-- zouba's section -->
+<div class="container">
+  <div class="recommendation-container" *ngIf="books.length > 0; else loadingTemplate">
+    <h2 class="recommendation-heading">Recommended Books</h2>
+    <div class="book-list">
+      <div class="book-item" *ngFor="let book of books; let i = index">
+        <div class="book-details">
+          <!-- Add the 'random-image' class to the img element -->
+          <img class="random-image" id="randomImage{{i}}" src="" alt="randomImageElement">
+          <p class="book-title">{{ book.title }}</p>
+          <p class="book-author">By: {{ book.authorName }}</p>
+          <!-- Add other book details as needed -->
         </div>
-        <!-- Section Button -->
-        <div class="col-12 col-lg-6">
-          <div class="text-center text-lg-right">
-            <a class="btn btn-outline-green text-uppercase" href="#">Explore All</a>
-          </div>
-        </div>
-        <!-- Section Button End -->
-      </div>
-      <!-- End Section Top -->
-      <div class="row justify-content-center">
-        <!-- Single Category -->
-        <div class="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-8">
-          <a href="#" class="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
-            <div class="text-blue bg-blue-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-              <i class="fa fa-briefcase"></i>
-            </div>
-            <!-- Category Content -->
-            <div class="">
-              <h5 class="font-size-5 font-weight-semibold text-black-2 line-height-1">Business Development</h5>
-              <p class="font-size-4 font-weight-normal text-gray"><span>415</span> Vacancy</p>
-            </div>
-          </a>
-        </div>
-        <!-- End Single Category -->
-        <!-- Single Category -->
-        <div class="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-8">
-          <a href="#" class="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
-            <div class="text-spray bg-spray-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-              <i class="fa fa-headset"></i>
-            </div>
-            <!-- Category Content -->
-            <div class="">
-              <h5 class="font-size-5 font-weight-semibold text-black-2 line-height-1">Customer Service</h5>
-              <p class="font-size-4 font-weight-normal text-gray"><span>235</span> Vacancy</p>
-            </div>
-          </a>
-        </div>
-        <!-- End Single Category -->
-        <!-- Single Category -->
-        <div class="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-8">
-          <a href="#" class="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
-            <div class="text-coral bg-coral-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-              <i class="fa fa-layer-group"></i>
-            </div>
-            <!-- Category Content -->
-            <div class="">
-              <h5 class="font-size-5 font-weight-semibold text-black-2 line-height-1">Development</h5>
-              <p class="font-size-4 font-weight-normal text-gray"><span>624</span> Vacancy</p>
-            </div>
-          </a>
-        </div>
-        <!-- End Single Category -->
-        <!-- Single Category -->
-        <div class="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-8">
-          <a href="#" class="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
-            <div class="text-red bg-red-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-              <i class="fa fa-pen-nib"></i>
-            </div>
-            <!-- Category Content -->
-            <div class="">
-              <h5 class="font-size-5 font-weight-semibold text-black-2 line-height-1">Design</h5>
-              <p class="font-size-4 font-weight-normal text-gray"><span>174</span> Vacancy</p>
-            </div>
-          </a>
-        </div>
-        <!-- End Single Category -->
-        <!-- Single Category -->
-        <div class="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-8">
-          <a href="#" class="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
-            <div class="text-orange bg-orange-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-              <i class="fa fa-rocket"></i>
-            </div>
-            <!-- Category Content -->
-            <div class="">
-              <h5 class="font-size-5 font-weight-semibold text-black-2 line-height-1">Marketing &amp; Management</h5>
-              <p class="font-size-4 font-weight-normal text-gray"><span>268</span> Vacancy</p>
-            </div>
-          </a>
-        </div>
-        <!-- End Single Category -->
-        <!-- Single Category -->
-        <div class="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-8">
-          <a href="#" class="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
-            <div class="text-yellow bg-yellow-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-              <i class="fa fa-location-arrow"></i>
-            </div>
-            <!-- Category Content -->
-            <div class="">
-              <h5 class="font-size-5 font-weight-semibold text-black-2 line-height-1">Sales &amp; Communication</h5>
-              <p class="font-size-4 font-weight-normal text-gray"><span>156</span> Vacancy</p>
-            </div>
-          </a>
-        </div>
-        <!-- End Single Category -->
-        <!-- Single Category -->
-        <div class="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-8">
-          <a href="#" class="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
-            <div class="text-turquoise bg-turquoise-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-              <i class="icon icon-sidebar-2"></i>
-            </div>
-            <!-- Category Content -->
-            <div class="">
-              <h5 class="font-size-5 font-weight-semibold text-black-2 line-height-1">Project Management</h5>
-              <p class="font-size-4 font-weight-normal text-gray"><span>162</span> Vacancy</p>
-            </div>
-          </a>
-        </div>
-        <!-- End Single Category -->
-        <!-- Single Category -->
-        <div class="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-8">
-          <a href="#" class="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
-            <div class="text-green bg-green-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-              <i class="fa fa-user"></i>
-            </div>
-            <!-- Category Content -->
-            <div class="">
-              <h5 class="font-size-5 font-weight-semibold text-black-2 line-height-1">Human Resource </h5>
-              <p class="font-size-4 font-weight-normal text-gray"><span>84</span> Vacancy</p>
-            </div>
-          </a>
-        </div>
-        <!-- End Single Category -->
       </div>
     </div>
   </div>
-  <!-- End Category Area -->
+
+  <ng-template #loadingTemplate>
+    <p class="loading-message">Loading...</p>
+  </ng-template>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- category Area -->
   <!-- ContentOne Area -->
   <!-- content-1 section -->
@@ -610,5 +510,33 @@
     <app-chat-bubble></app-chat-bubble>
 
   </section>
-  
+
 <app-footer></app-footer>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const imagePaths = [
+      'assets/image/l1/png/brand-logo-4.png',
+      'assets/image/l1/png/brand-logo-5.png',
+      'assets/image/l1/png/brand-logo-6.png',
+      // Add more file paths as needed
+    ];
+
+    function getRandomImagePath() {
+      const randomIndex = Math.floor(Math.random() * imagePaths.length);
+      return imagePaths[randomIndex];
+    }
+
+    const imgElements = document.querySelectorAll('.book-item img');
+    imgElements.forEach((imgElement, index) => {
+      imgElement.src = getRandomImagePath();
+      imgElement.alt = 'Random Image';
+    });
+    onsole.log("JavaScript is running!");
+    console.log("Image paths:", imagePaths);
+    console.log("Number of image elements:", imgElements.length);
+    console.log("Image elements:", imgElements);
+    console.log("JavaScript is running!");
+    console.log(imagePaths);
+  });
+</script>
+

@@ -9,7 +9,6 @@ import { HttpClient } from '@angular/common/http';
 import { Reclamation } from 'src/app/Models/reclamation/reclamation';
 import { ReclamationService } from 'src/app/services/reclamation.service';
 import { UserService } from 'src/app/services/user.service';
-import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-ajout-reclamation',
@@ -18,14 +17,10 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 })
 export class AjoutReclamationComponent {
 
-  isAuthenticated = false; // To track user authentication status
-
-
   ngOnInit(): void {
-    this.isAuthenticated = this.authService.isUserAuthenticated();
     this.userService.getCurrentUser().subscribe({
       next: (user) => {
-        
+
         if (user) {
           this.nouvelleReclamation.user = { ...this.nouvelleReclamation.user, id: user.id };
           this.nouvelleReclamation.user.role = user.role;
@@ -65,18 +60,17 @@ export class AjoutReclamationComponent {
 
 
   constructor(
-    private authService: AuthServiceService,
     private reclamationService: ReclamationService,
     private router: Router,
     private dialog: MatDialog, // Inject MatDialog
     private http: HttpClient, // Import HttpClient
-    private userService: UserService, 
+    private userService: UserService,
 
 
 
   ) {}
 
-  
+
 
   // Validate description length
   validateDescription(): void {

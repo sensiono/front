@@ -1,8 +1,6 @@
-// ChatBubbleComponent with optional user role handling
 import { Component } from '@angular/core';
-import { ChatBubbleService } from 'src/app/services/chat-bubble.service';
-import { AuthServiceService } from 'src/app/services/auth-service.service';
-import { ChatMessage } from 'src/app/Models/chat-bubble/ChatMessage';
+import { ChatBubbleService } from 'src/app/services/chat-bubble.service'; // Correct import for the service
+import { ChatMessage } from 'src/app/Models/chat-bubble/ChatMessage'; // Correct import for the data model
 
 @Component({
   selector: 'app-chat-bubble',
@@ -10,53 +8,42 @@ import { ChatMessage } from 'src/app/Models/chat-bubble/ChatMessage';
   styleUrls: ['./chat-bubble.component.css'],
 })
 export class ChatBubbleComponent {
-  isChatOpen = false; // Controls chat bubble's visibility
-  chatHistory: ChatMessage[] = []; // Stores chat messages
-  newMessage = ''; // Holds new chat message text
+  isChatOpen = false;
+  chatHistory: ChatMessage[] = [];
+  newMessage = '';
 
-  constructor(
-    private chatBubbleService: ChatBubbleService,
-    private authService: AuthServiceService
-  ) {
-    this.addMessage({
-      text: 'Welcome! How can I help you today?',
-      sender: 'bot',
-    });
+  constructor(private chatService: ChatBubbleService) {
+    // Initialize with a welcome message
+    this.addMessage({ text: 'Welcome! How can I help you today?', sender: 'bot' });
   }
 
   toggleChat(): void {
-    this.isChatOpen = !this.isChatOpen; // Toggle chat bubble visibility
+    this.isChatOpen = !this.isChatOpen;
   }
 
   sendMessage(): void {
     if (this.newMessage.trim()) {
-      let userRole = this.authService.getDecodedJwtData()?.role; // Retrieve user role if JWT is present
-      if (!userRole) {
-        userRole = 'anonymous'; // Default role if no JWT is available
-      }
-
-      const clientMessage: ChatMessage = {
-        text: this.newMessage,
-        sender: 'client',
-        userRole, // Pass user role to backend
-      };
-
+      const clientMessage: ChatMessage = { text: this.newMessage, sender: 'client' };
+      
       this.addMessage(clientMessage);
 
-      this.chatBubbleService.chatfct(clientMessage).subscribe({
+      this.chatService.chatfct(clientMessage).subscribe({
         next: (response: ChatMessage) => {
-          this.addMessage({ text: response.text, sender: 'bot' }); // Handle bot's response
+          this.addMessage({ text: response.text, sender: 'bot' });
         },
         error: (error) => {
-          console.error('Error sending chat message:', error);
+          console.error('Error while sending message:', error);
         },
+        complete: () => {
+          console.log('Chat message sent and response received');
+        }
       });
 
-      this.newMessage = ''; // Clear message input after sending
+      this.newMessage = '';
     }
   }
 
   addMessage(message: ChatMessage): void {
-    this.chatHistory.push(message); // Add message to chat history
+    this.chatHistory.push(message);
   }
 }

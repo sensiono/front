@@ -1,0 +1,50 @@
+.recommendation-container {
+  padding: 60px;
+  background-color: #fff; /* Change to white background */
+  border-radius: 10px; /* Add more rounded corners */
+  margin-bottom: 20px; /* Add space between container and sidebar */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+.recommendation-heading {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px; /* Add space below heading */
+}
+
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Align items horizontally in center */
+}
+
+.book-item {
+  flex: 0 0 calc(33.33% - 20px); /* 3 items per row */
+  margin-right: 20px; /* Reduce margin between items */
+  margin-bottom: 20px; /* Reduce margin between items */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px; /* Increase padding */
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+.book-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-title {
+  font-size: 18px; /* Increase font size */
+  font-weight: bold;
+}
+
+.book-author {
+  color: #666;
+  margin-top: 5px; /* Add space between title and author */
+}
+
+.loading-message {
+  font-style: italic;
+  color: #999;
+}
