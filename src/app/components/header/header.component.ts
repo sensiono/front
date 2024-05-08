@@ -36,17 +36,12 @@ export class HeaderComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
       rememberMe: [false],
-      confirmPassword: ['', Validators.required], // Ensure this is defined
-      acceptTerms: [false, Validators.requiredTrue], // Ensure this is defined
-      
     });
 
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
-
-    
   }
 
   // Register
@@ -57,10 +52,6 @@ export class HeaderComponent implements OnInit {
         if (response.id != null) {
           alert("Hello " + response.firstname);
         }
-
-        this.router.navigateByUrl('/').then(() => {
-          window.location.reload(); // Reload the page
-        });
       }
     );
   }
@@ -74,13 +65,11 @@ export class HeaderComponent implements OnInit {
         const jwtToken = response.access_token;
         localStorage.setItem('jwt', jwtToken);
         
-        
-        
-        
+        // Reload the page after login and navigate to the root path
+        this.router.navigateByUrl('/').then(() => {
+          window.location.reload(); // Reload the page
+        });
       }
-      this.router.navigateByUrl('/').then(() => {
-        window.location.reload(); // Reload the page
-      });
     });
   }
 
@@ -89,8 +78,7 @@ export class HeaderComponent implements OnInit {
     this.authService.logout().subscribe({
       next: (response) => {
         console.log('Logout successful');
-        
-        
+        localStorage.removeItem('jwt');
         
         // Reload the page after logout and navigate to the root path
         this.router.navigate(['/']).then(() => {
@@ -101,7 +89,6 @@ export class HeaderComponent implements OnInit {
         console.error('Logout error:', error);
       },
     });
-    localStorage.clear();
   }
 
   navigateToAddReclamation(event: Event): void {

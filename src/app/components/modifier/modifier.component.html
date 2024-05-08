@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile Update</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Update User Profile Form -->
+<div class="container">
+  <h2>Update User Profile</h2>
+  <form #profileForm="ngForm" (ngSubmit)="submitForm()">
+    <div class="form-group">
+      <label for="userId">User ID:</label>
+      <input type="number" class="form-control" id="userId" name="userId" [(ngModel)]="userId" required>
+    </div>
+    <div class="form-group">
+      <label for="oldPassword">Old Password:</label>
+      <input type="password" class="form-control" id="oldPassword" name="oldPassword" [(ngModel)]="oldPassword" required>
+    </div>
+    <div class="form-group">
+      <label for="newPassword">New Password:</label>
+      <input type="password" class="form-control" id="newPassword" name="newPassword" [(ngModel)]="newPassword">
+    </div>
+    <div class="form-group">
+      <label for="firstname">First Name:</label>
+      <input type="text" class="form-control" id="firstname" name="firstname" [(ngModel)]="firstname" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel">Success</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Your profile has been updated successfully!
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- AngularJS CDN -->
+<!-- Add your AngularJS script reference here -->
+
+<!-- Your AngularJS app script -->
+<!-- Add your AngularJS app script here -->
+
+</body>
+</html>

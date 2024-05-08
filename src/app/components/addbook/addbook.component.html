@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Book</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+
+  .booklist {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    height: 100px;
+  }
+
+  button[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  .go-back {
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .go-back:hover {
+    background-color: #bbb;
+  }
+</style>
+</head>
+<div class="site-wrapper overflow-hidden bg-default-2">
+  <!-- Header Area -->
+  <app-adminheader></app-adminheader>
+  <app-adminsidebar></app-adminsidebar>
+<app-adminheader></app-adminheader>
+<app-adminsidebar></app-adminsidebar>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<body>
+<div class="booklist">
+  <h2>Add New Book</h2>
+  <form #bookForm="ngForm" (ngSubmit)="saveBook(bookForm)">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" [(ngModel)]="nouvelleBook.title" required>
+    </div>
+    <div class="form-group">
+      <label for="authorName">Author Name:</label>
+      <input type="text" id="authorName" name="authorName" [(ngModel)]="nouvelleBook.authorName" required>
+    </div>
+    <div class="form-group">
+      <label for="isbn">ISBN:</label>
+      <input type="text" id="isbn" name="isbn" [(ngModel)]="nouvelleBook.isbn" required>
+    </div>
+    <div class="form-group">
+      <label for="synopsis">Synopsis:</label>
+      <textarea id="synopsis" name="synopsis" [(ngModel)]="nouvelleBook.synopsis" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="bookCover">Book Cover:</label>
+      <input type="text" id="bookCover" name="bookCover" [(ngModel)]="nouvelleBook.bookCover" required>
+    </div>
+    <!-- Add other fields as needed -->
+    <button type="submit" [disabled]="bookForm.invalid">Save</button>
+  </form>
+  <h2></h2>
+</div>
+<button class="go-back" (click)="goBack()">Go Back</button>
+</body>
+</div>
+
+</html>
+
