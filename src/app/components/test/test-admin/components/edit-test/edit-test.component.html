@@ -1,0 +1,69 @@
+
+
+<div class="container">
+  <div class="flex justify-center">
+    <h1 class="ml-32">Update your test</h1>
+  </div>
+  <div class="container">
+    <form class="mb-[25%]" *ngIf="postForm" [formGroup]="postForm" (ngSubmit)="onSubmit()">
+      <p>Name :</p>
+      <input class="w-full" formControlName="name" pInputText />
+      <p>Description :</p>
+      <input class="w-full" formControlName="description" pInputText />
+      <p>Stack :</p>
+      <input class="w-full" formControlName="stack" pInputText />
+      <p>Level :</p>
+      <input class="w-full" formControlName="level" pInputText />
+
+      <div formArrayName="questions">
+        <div class="mb-4" *ngFor="let question of questions().controls; let questIndex=index">
+          <div [formGroupName]="questIndex">
+            <div class="mb-[2%] grid grid-cols-12">
+              <div class="col-span-6">
+                <p>question :</p>
+              </div>
+              <div class="col-span-6">
+                <input class="w-full" type="text" formControlName="text" pInputText />
+              </div>
+            </div>
+            <div class="grid grid-cols-12">
+              <div class="col-span-6">
+                <p>Correct answer:</p>
+              </div>
+              <div class="col-span-6">
+                <input class="w-full" type="text" formControlName="correct_option" pInputText />
+              </div>
+            </div>
+
+            <div class="grid">
+              <div class="grid grid-cols-12">
+                <div class="col-span-8">
+                  <div formArrayName="options">
+                    <div *ngFor="let option of questionOptions(questIndex).controls; let optionIndex = index">
+                      <div [formGroupName]="optionIndex">
+                        <p>option for your question :</p>
+                        <input type="text" formControlName="text" pInputText />
+                        <br />
+                        <br />
+                        <button class="button-ab" (click)="removeQuestionOption(questIndex, optionIndex)">Remove option</button>
+                        <br />
+                        <br />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-[2%]"></div>
+            <button class="button-ab" (click)="removeQuestion(questIndex)">Remove question</button>
+
+            <button class="button-aa" (click)="addQuestionOption(questIndex)">Add option</button>
+          </div>
+        </div>
+        <button class="button-aa" (click)="addQuestion()">Add Question</button>
+      </div>
+      <button class="next" (onClick)="postTest()"> update test</button>
+   </form>
+  </div>
+</div>

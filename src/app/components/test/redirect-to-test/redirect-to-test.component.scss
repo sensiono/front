@@ -1,0 +1,119 @@
+.container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  padding-top: 30px;
+  width: 600px;
+  height: auto;
+}
+
+h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 45px;
+  font-weight: 600;
+  color: #000000bb;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  line-height: 37px;
+}
+
+p {
+  font-size: 17px;
+  font-weight: 500;
+  color: #000000b2;
+  line-height: 20px;
+  letter-spacing: 0.6px;
+  margin-bottom: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  font-size: 13px;
+  font-weight: 500;
+  color: #000000b2;
+  line-height: 20px;
+  letter-spacing: 0.6px;
+  margin-bottom: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu-button {
+  transition: fill 500ms;
+}
+
+.outer-circle {
+  transform-origin: 60px 60px;
+  transition: transform 2s cubic-bezier(0.620, 0.005, 0.000, 1.005);
+}
+
+.button {
+  max-width: 12rem;
+  background: none;
+  border: 0 none;
+  font-size: 0;
+  cursor: pointer;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+
+  &:hover {
+    .menu-button {
+      fill: #22c538;
+    }
+
+    .outer-circle {
+      transform: rotate(360deg);
+    }
+  }
+  .form-group {
+    margin-bottom: 20px;
+  
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  
+    input {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  }
+/* The table container styles */
+.table-container {
+  max-height: 300px; /* Set the maximum height for the table container */
+  border: 1px solid #ccc; /* Add a border for better aesthetics */
+}
+
+.scrollable-table {
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 100%; /* Set the maximum height for the scrollable area */
+}
+
+/* Adjustments for the table and its cells */
+mat-table {
+  width: 100%; /* Make the table full-width */
+  border-collapse: collapse; /* Remove table cell borders */
+}
+
+th, td {
+  border: 1px solid #ddd; /* Border color for table cells */
+  padding: 8px; /* Cell padding */
+}
+
+th {
+  background-color: #f2f2f2; /* Background color for table headers */
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Alternate row background color */
+}
+
+}

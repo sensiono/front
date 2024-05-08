@@ -1,0 +1,171 @@
+<ng-container *ngIf="step <= 5">
+  <div class="container flex content-center justify-center">
+    <div class="grid grid-cols-12">
+      <div class="col-span-5 m-0 p-1">
+        <div class="inline leading-5">
+          <small class="mr-2 text-gray-500">{{ step }}/5</small>
+          <span>{{ stepLabel[step - 1] }}</span>
+        </div>
+
+        <h2>{{ leftPanelHeader[step - 1] }}</h2>
+        <p>{{ leftPanelContent[step - 1] }}</p>
+
+        <ng-container *ngIf="step === 1" class="block"> </ng-container>
+      </div>
+      <div class="col-span-1 h-full" style="width: 100px">
+        <p-divider layout="vertical"> </p-divider>
+      </div>
+      <form class="col-span-6 w-full font-bold" [formGroup]="postForm">
+        <ng-container *ngIf="step !== 3 && step !== 4">
+          <h4>{{ rightPanelHeader[step - 1] }}</h4>
+        </ng-container>
+
+        <!-- louled here is an an example of how to use the formControlName and fromGroup with validation and error messages  -->
+        <div class="mb-7 w-full">
+          <ng-container *ngIf="step === 1">
+            <input formControlName="name" class="w-full" type="text" pInputText />
+            <small *ngIf="!postForm.controls['name'].valid && postForm.controls['name'].dirty" id="username-help" class="p-error mt-1">Title is required</small>
+          </ng-container>
+
+          <ng-container *ngIf="step === 2">
+            <div class="mb-6 grid">
+              <!-- 
+                  to do :
+                  <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>  -->
+              <textarea
+                placeholder="Already have a description? Paste it here!"
+                rows="8"
+                cols="40"
+                minlength="50"
+                [autoResize]="true"
+                formControlName="description"
+                pInputTextarea></textarea>
+              <small *ngIf="!postForm.controls['description'].valid && postForm.controls['description'].dirty" id="username-help" class="p-error mt-1"
+                >At least 50 caracters is required</small
+              >
+              <p-message
+                styleClass="pt-8"
+                *ngIf="this.postForm.get('description')?.value.length < 200 && postForm.controls['description'].valid"
+                severity="warn"
+                text="Your description looks a little short. Please add more details to be more specific about your new Test."></p-message>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="step === 3" class="block">
+            <p-dropdown class="w-full" autoWidth="false" [style]="{ width: '100%' }" [options]="stacks" formControlName="stack" placeholder="Select a Stack"></p-dropdown>
+          </ng-container>
+
+          <ng-container class="grid grid-cols-12" *ngIf="step === 4">
+            <div class="card justify-content-center flex">
+              <p-dropdown class="w-full" autoWidth="false" [style]="{ width: '100%' }" [options]="levels" formControlName="level" placeholder="Select a Level"></p-dropdown>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="step === 5">
+           
+
+            <form class="mb-[25%]" [formGroup]="postForm" (ngSubmit)="onSubmit()">
+              <div formArrayName="questions">
+                <div class="mb-4" *ngFor="let question of questions().controls; let questIndex = index">
+                  <div [formGroupName]="questIndex">
+                    <div class="mb-[2%] grid grid-cols-12">
+                      <div class="col-span-6">
+                        <p>question :</p>
+                      </div>
+                      <div class="col-span-6">
+                        <input class="w-full" type="text" formControlName="text" pInputText />
+                      </div>
+                    </div>
+                    <div class="grid grid-cols-12">
+                      <div class="col-span-6">
+                        <p>Correct answer:</p>
+                      </div>
+                      <div class="col-span-6">
+                        <input class="w-full" type="text" formControlName="correct_option" pInputText />
+                      </div>
+                    </div>
+
+                    <div class="grid">
+                      <div class="grid grid-cols-12">
+                        <div class="col-span-8">
+                          <div formArrayName="options">
+                            <div *ngFor="let option of questionOptions(questIndex).controls; let optionIndex = index">
+                              <div [formGroupName]="optionIndex">
+                                <p>option for your question :</p>
+                                <input type="text" formControlName="text" pInputText />
+                                <br />
+                                <br />
+                                <button class="button-ab" (click)="removeQuestionOption(questIndex, optionIndex)">Remove option</button>
+                                <br />
+                                <br />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-[2%]"></div>
+                    <button class="button-ab" (click)="removeQuestion(questIndex)">Remove question</button>
+
+                    <button class="button-aa" (click)="addQuestionOption(questIndex)">Add option</button>
+                  </div>
+                </div>
+              </div>
+              <button class="button-aa" (click)="addQuestion()">Add question</button>
+              <br />
+              <br />
+            </form>
+          </ng-container>
+        </div>
+
+        <ng-container *ngIf="step === 1" class="block">
+          <label class="w-full text-left text-sm font-medium">Tips</label>
+
+          <ul id="disc">
+            <li>Naming your test in a proficient way will help you in the long run</li>
+            <li>It is not recommended to choose short titles</li>
+          </ul>
+        </ng-container>
+
+        <ng-container *ngIf="step === 2" class="block">
+          <!--
+          <div class="card align-items-center mt-7 flex flex-wrap gap-2">
+            <p-chip *ngFor="let question of questions | async" [label]="question.label"></p-chip>
+          </div>
+          -->
+        </ng-container>
+      </form>
+    </div>
+  </div>
+  <p-footer>
+    <div class="mb-20 w-full">
+      <p-progressBar class="custom-progress" [value]="progress" [style]="{ height: '6px ' }"> </p-progressBar>
+    </div>
+    <div class="button-container">
+      <p-button *ngIf="step > 1 && step < 5" label="Back" icon="pi pi-arrow-left" styleClass="p-button-outlined p-button-success left-button" (onClick)="setStepBack()"></p-button>
+      <p-button
+        *ngIf="step < 5"
+        [disabled]="!this.postForm.controls[formGroupNames[step - 1]].valid"
+        [label]="'Next : ' + stepLabel[step]"
+        icon="pi pi-check"
+        styleClass="p-button-success right-button"
+        (onClick)="setStepForward()"></p-button>
+    </div>
+  </p-footer>
+</ng-container>
+
+<ng-container *ngIf="step === 5">
+  <div class="scrollable-container">
+    <!-- Step 5 content -->
+    <!-- Your existing code for step 5 goes here -->
+    <!-- Make sure the content inside the scrollable container is properly formatted -->
+
+    <p-footer>
+      <div class="button-container">
+        <p-button *ngIf="step > 1" label="Back" icon="pi pi-arrow-left" styleClass="p-button-outlined p-button-success left-button" (onClick)="setStepBack()"></p-button>
+        <p-button [label]="'Next : ' + stepLabel[step]" icon="pi pi-check" styleClass="p-button-success right-button" (onClick)="postTest()"></p-button>
+      </div>
+    </p-footer>
+  </div>
+</ng-container>

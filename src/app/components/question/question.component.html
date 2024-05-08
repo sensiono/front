@@ -1,0 +1,54 @@
+
+    <div class="main" #main>
+      <span class="smth">
+        <mat-progress-spinner class="smth" mode="determinate"  [value]="(timer / (this.questions.length * 1 * 60)) * 100 " ></mat-progress-spinner>
+        {{getFormattedTime()}}
+        </span>
+      <div class="questionnaire">
+        <div class="question" #questionContainer>
+          <h2 class="question__heading">Question {{ currentQuestionIndex + 1 }}</h2>
+          <div class="question__q">{{ question.text }}</div>
+          <form [formGroup]="answerForm">
+          <div class="question__answers" #answer>
+            <div
+              class="answer"  
+              *ngFor="let option of question.options"
+              #answerr
+              (click)="onSelect(answerr)"
+            >
+              <p>{{ option?.text }}</p>
+            </div>
+          </div>
+          </form>
+        </div>
+        {{ selectedAnswer }}
+        {{score}}
+        <div class="actions" #actions>
+        <!--  <button class="previous" (click)="prev()">
+            <svg class="icon icon-back">
+              <use href="./assets/icons.svg#icon-chevron-left"></use>
+            </svg>
+          </button> -->
+         
+          <button *ngIf="!isLastQuestion" class="next" (click)="goToNextQuestion()">Next</button>
+          <button *ngIf="isLastQuestion" class="next" (click)="finishQuiz()">Finish</button>
+        </div>
+        
+        <div class="progress__bar">
+          <div #slider class="progress__bar--slider"></div>
+        </div>
+        <div class="progress__actions" #progress>
+          <div class="p-actions-left">
+            <span>Question {{ currentQuestionIndex + 1 }}</span>
+            <span>Out Of</span>
+            <span>{{ questions.length }}</span>
+          </div>
+        
+           
+
+          
+        </div>
+      </div>
+    </div>
+
+  

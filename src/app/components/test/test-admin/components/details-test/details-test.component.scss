@@ -1,0 +1,21 @@
+.test-details {
+    background-color: rgb(232, 245, 219);
+    border: 2px solid #ccc;
+    padding: 1rem;
+    box-sizing: border-box;
+  
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem; /* Add margin-top for spacing */
+      color: #333;
+    }
+  
+    .question-container {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 1rem;
+    }
+  }
+  

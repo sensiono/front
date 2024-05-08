@@ -1,0 +1,10 @@
+<p>question-admin works!</p>
+<p>question works!</p>
+<div *ngFor="let question of questions">
+  <div>{{ question.text }}</div>
+  <div>{{ question.correct_option }}</div>
+  <div>{{ question.text }}</div>
+  <div *ngFor="let option of question.options">
+    {{ option.text }}
+  </div>
+</div>

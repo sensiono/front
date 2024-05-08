@@ -1,0 +1,94 @@
+.container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  padding-top: 30px;
+  width: 1200px;
+  height: auto;
+}
+h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 37px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  line-height: 37px;
+  max-width: 400px;
+}
+
+h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-left: 40px;
+  font-size: 37px;
+  font-weight: 600;
+  color: #000000bb;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  line-height: 37px;
+  max-width: 400px;
+}
+h3 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-left: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  color: #000000bb;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  line-height: 37px;
+  max-width: 400px;
+}
+
+p {
+  margin-left: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000b2;
+  line-height: 20px;
+  letter-spacing: 0.6px;
+  margin-bottom: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 400px;
+}
+
+.description-label {
+  font-size: 18px; /* Adjust size as needed */
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  gap: 30px; /* Adjust the gap as needed */
+  margin-top: 10px; /* Add margin between the button container and the rest of the content */
+}
+
+button.next {
+  background-color: #16a34a; /* Green background color */
+  color: #fff;
+  outline: none;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+
+  &.red {
+    background-color: #ff0000; /* Red background color */
+  }
+}
+
+:host::ng-deep .p-dataview .p-dataview-content {
+  background: transparent;
+  color: #3f3f46;
+  border: 0 none;
+  padding: 0;
+}
+:host::ng-deep .p-dataview.p-dataview-list .p-dataview-content > .p-grid > div {
+  --tw-border-opacity: 1;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(197, 193, 193, 0.768627451);
+  border-width: 1px;
+  border-width: 1px 1px 1px 1px;
+  margin-bottom: 12px;
+}
+

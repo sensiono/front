@@ -1,0 +1,25 @@
+<div class="container">
+  <button (click)="addTest()" class="next px-10">New test</button>
+  <div class="flex justify-center">
+    <h1 class="ml-32">List of Tests</h1>
+  </div>
+  <div class="container">
+    <p-dataView #dv [value]="tests">
+      <ng-template let-test pTemplate="listItem">
+        <div class="rou flex justify-between border border-gray-900 px-1.5 py-7 sm:px-7">
+          <div>
+            <br />
+            <h2>{{ test.name }}</h2>
+            <br />
+            <p><span class="description-label">Description:</span> {{ test.description }}</p> <!-- Added span with class -->
+          </div>
+          <div class="button-container">
+            <button (click)="show(test)" class="next px-7">Show Test Details</button>
+            <button (click)="updateTest(test.test_id)" class="next">Update Test</button>
+            <button (click)="deleteTest(test.test_id)" class="next red">Delete Test</button>
+          </div>
+        </div>
+      </ng-template>
+    </p-dataView>
+  </div>
+</div>
