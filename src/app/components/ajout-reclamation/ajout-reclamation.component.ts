@@ -107,23 +107,7 @@ export class AjoutReclamationComponent {
     }
   }
 
-  async generatePDF(reclamation: Reclamation): Promise<Blob> {
-    const pdf = new jsPDF();
-    pdf.text('Détails de la Réclamation', 10, 10); // Title
-    pdf.text(`Description: ${reclamation.description}`, 10, 50); // Description
-    pdf.text(`Date de Création: ${reclamation.createdAt.toLocaleString()}`, 10, 110); // Created at
-    pdf.text(`User Id: ${this.nouvelleReclamation.user?.id}`, 10, 10); // Created at
-
-    const qrDataUrl = await QRCode.toDataURL(`Description: ${reclamation.description}`);
-    pdf.addImage(qrDataUrl, 'PNG', 10, 130, 50, 50); // Add QR code
-
-    return pdf.output('blob'); // Generate the PDF as a Blob
-  }
-
-  async generateQRCode(reclamation: Reclamation): Promise<string> {
-    const qrCodeData = `Description: ${reclamation.description}\nCrée le: ${reclamation.createdAt.toLocaleString()}`;
-    return await QRCode.toDataURL(qrCodeData);
-  }
+  
 
   goBack() {
     this.router.navigate(['/']); // Navigate back

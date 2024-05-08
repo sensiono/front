@@ -1,4 +1,4 @@
-import { ERole } from "./role";
+import { Role } from "./role";
 
 export class User {
     id?: number;
@@ -6,9 +6,9 @@ export class User {
     firstname?: string;
     lastname?: string;
     password?: string;
-    role?: [ERole];
     registrationDate?: string;
     enabled?: boolean;
     imageName?: string;
+    role?:Role;
 
 }

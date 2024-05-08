@@ -26,7 +26,27 @@ import { PopupsuccessComponent } from './components/modifier-reclamation/popupsu
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { ChatBubbleComponent } from './components/chat-bubble/chat-bubble.component'; // Import MatButtonModule for triggering menus
+import { ChatBubbleComponent } from './components/chat-bubble/chat-bubble.component';
+import { AddbookComponent } from './components/addbook/addbook.component';
+import { BooklistComponent } from './components/booklist/booklist.component';
+import { CalendarComponent,  } from './components/calender/calender.component'; // Import MatButtonModule for triggering menus
+import { MaterialModule } from './AngularMaterialModule';
+import { ViewBlogComponent } from './components/view-blog/view-blog.component';
+import { ViewBlogsComponent } from './components/view-blogs/view-blogs.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { SearchByNameBlogComponent } from './components/search-by-name-blog/search-by-name-blog.component';
+import { OptionComponent } from './components/option/option.component';
+import { OptionAdminComponent } from './components/option/option-admin/option-admin.component';
+import { DialogModule } from '@angular/cdk/dialog';
+import { ModifierComponent } from './components/modifier/modifier.component';
+import { RecomendationComponent } from './components/recomendation/recomendation.component';
+import { PostulationComponent } from './postulation/postulation.component';
+import { ModifierOffreComponent } from './modifier-offre/modifier-offre.component';
+import { HomeoffreComponent } from './homeoffre/homeoffre.component';
+import { EventsComponent } from './events/events.component';
+import { EvenementComponent } from './evenement/evenement.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+
 
 
 @NgModule({
@@ -46,7 +66,26 @@ import { ChatBubbleComponent } from './components/chat-bubble/chat-bubble.compon
     PopupComponent,
     PopupsuccessComponent,
     ChatBubbleComponent,
-
+    AddbookComponent,
+    BooklistComponent,
+    CalendarComponent,
+    ViewBlogComponent,
+    ViewBlogsComponent,
+    BlogComponent,
+    SearchByNameBlogComponent,
+  
+    ModifierComponent,
+    BooklistComponent,
+    ModifierComponent,
+    AddbookComponent,
+    CalendarComponent,
+    RecomendationComponent,
+    PostulationComponent,
+    ModifierOffreComponent,
+    HomeoffreComponent,
+    EventsComponent,
+    EvenementComponent,
+    CreateEventComponent,
   
   
   ],
@@ -66,7 +105,18 @@ import { ChatBubbleComponent } from './components/chat-bubble/chat-bubble.compon
     NgxChartsModule,
     MatMenuModule,
     MatButtonModule,
+    MaterialModule,
+    MatTableModule,
+    //DataViewModule,
+    DialogModule,
+    //DropdownModule,
+    //AccordionModule,
+    //OptionRoutingModule,
+    //DockModule,
+    //MenubarModule;
 
+
+    
    
 
   ],

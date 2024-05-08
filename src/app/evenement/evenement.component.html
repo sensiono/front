@@ -1,0 +1,25 @@
+<!-- evenement.component.html -->
+<app-header></app-header>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2 class="text-center">List of Events</h2>
+        <!-- Search field -->
+        <div class="text-center mb-3">
+          <input type="text" class="form-control" [(ngModel)]="searchTerm" (input)="onSearchTermChange()" placeholder="Search...">
+        </div>
+  
+        <!-- List of events -->
+        <ul class="list-group">
+          <li *ngFor="let evenement of displayedEvenements" class="list-group-item">
+            <h5>{{ evenement.titre }}</h5>
+            <p>Description: {{ evenement.description }}</p>
+            <p>Date: {{ evenement.date }}</p>
+            <p>Location: {{ evenement.lieu }}</p>
+            <button class="btn btn-primary" >Participer</button> <!-- Participate button -->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<app-footer></app-footer>

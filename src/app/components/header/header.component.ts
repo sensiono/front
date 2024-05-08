@@ -15,6 +15,10 @@ export class HeaderComponent implements OnInit {
   registerForm: FormGroup | any;
   loginForm: FormGroup | any;
 
+  isAdmin = false;
+
+  forgetPasswordForm: FormGroup| any;
+
   constructor(
     private router: Router,
     private authService: AuthServiceService,
@@ -26,6 +30,8 @@ export class HeaderComponent implements OnInit {
       const jwtData = jwt.split('.')[1];
       const decodedJwtJsonData = window.atob(jwtData);
       this.decodedJwtData = JSON.parse(decodedJwtJsonData);
+
+      
     }
   }
 
@@ -45,6 +51,20 @@ export class HeaderComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
+
+    this.forgetPasswordForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+    });
+
+    
+    const userEmail = this.authService.getDecodedJwtData()?.email;
+    this.isAdmin = userEmail === 'daadsoufi01@gmail.com';
+
+      
+    
+    
+  
+      
 
     
   }
@@ -73,15 +93,39 @@ export class HeaderComponent implements OnInit {
         console.log('JWT Token:', response.access_token);
         const jwtToken = response.access_token;
         localStorage.setItem('jwt', jwtToken);
-        
-        
-        
-        
+  
+        const email = this.loginForm.value.email; // Get the email from the login form
+  
+        if (email === 'daadsoufi01@gmail.com') {
+          // If email matches, redirect to /admin
+          this.router.navigateByUrl('/admin').then(() => {
+            window.location.reload(); // Reload the page
+          });
+          return; // Return early to avoid additional navigation
+        }
       }
+  
+      // Default behavior: navigate to the root path and reload
       this.router.navigateByUrl('/').then(() => {
         window.location.reload(); // Reload the page
       });
     });
+  }
+
+  requestPasswordReset(): void {
+    if (this.forgetPasswordForm.valid) {
+      this.authService.requestPasswordReset(this.forgetPasswordForm.value).subscribe({
+        next: () => {
+          console.log('Password reset link sent to your email.');
+        },
+        error: (error) => {
+          console.log(
+            'Failed to send password reset link. Please try again later.'
+          );
+          console.error('Error sending password reset link:', error);
+        },
+      });
+    }
   }
 
   // Logout

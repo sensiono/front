@@ -25,6 +25,19 @@ export class AuthServiceService {
     return this.http.post(BASE_URL + 'api/v1/auth/logout', null);
   }
 
+  // Request a password reset
+  requestPasswordReset(email: string): Observable<any> {
+    return this.http.post(BASE_URL + 'api/v1/auth/forget-password', { email });
+  }
+
+  // Reset password using the provided token
+  resetPassword(token: string, newPassword: string): Observable<any> {
+    return this.http.post(BASE_URL + 'api/v1/auth/reset-password', {
+      token,
+      newPassword,
+    });
+  }
+
   // Get decoded JWT data
   getDecodedJwtData(): any {
     const jwt = localStorage.getItem('jwt');
@@ -38,14 +51,22 @@ export class AuthServiceService {
     return null; // Return null if JWT doesn't exist
   }
 
-  // Check if the user is an admin
   isUserAdmin(): boolean {
-    const decodedJwt = this.getDecodedJwtData(); // Get decoded JWT data
+    const decodedJwt = this.getDecodedJwtData(); // Decode JWT
     if (decodedJwt && decodedJwt.role) {
-      return decodedJwt.role.includes('Admin'); // Check if the user has the Admin role
+      console.log("User Role:", decodedJwt.role);
+  
+      // If 'role' is a string, check if it's 'Admin'
+      if (typeof decodedJwt.role === 'string') {
+        return decodedJwt.role === 'Admin';
+      }
+  
+      // If 'role' is an array, check if 'Admin' is in the array
+      if (Array.isArray(decodedJwt.role)) {
+        return decodedJwt.role.includes('Admin');
+      }
     }
-
-    return false; // If no role or user is not an admin
+    return false; // If no role or not admin
   }
 
   
@@ -59,6 +80,11 @@ export class AuthServiceService {
   getUserRole(): string | null {
     const decodedJwt = this.getDecodedJwtData();
     return decodedJwt?.role ?? null;
+  }
+
+  getUserid(): string | null {
+    const decodedJwt = this.getDecodedJwtData();
+    return decodedJwt?.id ?? null;
   }
 
 }

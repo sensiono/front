@@ -1,0 +1,28 @@
+<div class="container">
+    <h2>Modifier l'offre</h2>
+    <form (ngSubmit)="updateOffre()">
+      <div class="form-group">
+        <label for="titre">Titre :</label>
+       *
+      </div>
+      <div class="form-group" *ngIf="offre">
+        <label for="description">Description :</label>
+        <input type="text" id="description" name="description" class="form-control" [(ngModel)]="offre.description" required>
+      </div>
+      <div class="form-group" *ngIf="offre">
+        <label for="competenceRequise">Compétence Requise :</label>
+        <input type="text" id="competenceRequise" name="competenceRequise" class="form-control" [(ngModel)]="offre.competenceRequise" required>
+      </div>
+      <div class="form-group" *ngIf="offre">
+        <label for="duree">Durée :</label>
+        <input type="text" id="duree" name="duree" class="form-control" [(ngModel)]="offre.duree" required>
+      </div>
+      <div class="form-group" *ngIf="offre">
+        <label for="remuneration">Rémunération :</label>
+        <input type="number" id="remuneration" name="remuneration" class="form-control" [(ngModel)]="offre.remuneration" required>
+      </div>
+      <!-- Ajoutez d'autres champs d'offre ici -->
+      <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+    </form>
+  </div>
+  

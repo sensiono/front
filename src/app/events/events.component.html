@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2 class="text-center">List of Events</h2>
+        <div class="text-center mb-3">
+          <button class="btn btn-primary mr-2" (click)="addEvent()">Add Event</button>
+          <button class="btn btn-danger" (click)="generatePdf()">Generate PDF</button> <!-- Bouton pour générer le PDF -->
+        </div>
+  
+        <!-- Champ de recherche -->
+        <div class="form-group">
+          <input type="text" class="form-control" [(ngModel)]="searchTerm" (input)="onSearchTermChange()" placeholder="Search...">
+        </div>
+  
+        <!-- Liste des événements filtrés -->
+        <ul class="list-group">
+          <li *ngFor="let evenement of displayedEvenements" class="list-group-item">
+            <h5>{{ evenement.titre }}</h5>
+            <p>Description: {{ evenement.description }}</p>
+            <p>Date: {{ evenement.date }}</p>
+            <p>Location: {{ evenement.lieu }}</p>
+          </li>
+        </ul>
+  
+        <!-- Pagination -->
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [length]="displayedEvenements.length" (page)="onPageChange($event)">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+  

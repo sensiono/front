@@ -8,7 +8,7 @@
           <div class="brand-logo">
             <a href="index.html">
               <!-- light version logo (logo must be black)-->
-              <img src="assets/image/kh.png" alt="" class="light-version-logo default-logo" style="width: 50px; height: auto;"> 
+              <img src="assets/image/kh.png" alt="" class="light-version-logo default-logo" style="width: 100px; height: auto;"> 
 
               <!-- Dark version logo (logo must be White)-->
               <img src="assets/image/logo-main-white.png" alt="" class="dark-version-logo">
@@ -18,23 +18,23 @@
             <div class="navbar-nav-wrapper">
               <ul class="navbar-nav main-menu">
                 <li class="nav-item dropdown active">
-                  <a class="nav-link dropdown-toggle gr-toggle-arrow" id="navbarDropdown" href="#features" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home <i class="icon icon-small-down"></i></a>
+                  <a class="nav-link dropdown-toggle gr-toggle-arrow" id="navbarDropdown" href="#features" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blogs <i class="icon icon-small-down"></i></a>
                   <ul class="gr-menu-dropdown dropdown-menu" aria-labelledby="navbarDropdown">
                     <li class="drop-menu-item">
-                      <a href="home-1.html">
-                        Homepage 01
+                      <a href="/blog">
+                          Create Blog
                       </a>
-                    </li>
-                    <li class="drop-menu-item">
-                      <a href="home-2.html">
-                        Homepage 02
+                  </li>
+                  <li class="drop-menu-item">
+                      <a href="/view-all">
+                          View Blogs
                       </a>
-                    </li>
-                    <li class="drop-menu-item">
-                      <a href="home-3.html">
-                        Homepage 03
-                      </a>
-                    </li>
+                  </li>
+                  <li class="drop-menu-item">
+                    <a href="/search-by-name">
+                        Search
+                    </a>
+                </li>
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -133,27 +133,24 @@
                       </ul>
                     </li>
                     <li class="drop-menu-item">
-                      <a href="/">
+                      <a href="/reclamations">
                         Reclamations
                       </a>
                     </li>
-                    <li class="drop-menu-item dropdown">
-                      <a class="dropdown-toggle gr-toggle-arrow" id="navbarDropdown242" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Account
-                        <i class="icon icon-small-down"></i>
+                    <li class="drop-menu-item">
+                      <a href="/redirect-to-test">
+                        Test your skills
                       </a>
-                      <ul class="gr-menu-dropdown dropdown-menu dropdown-left" aria-labelledby="navbarDropdown242">
-                        <li class="drop-menu-item">
-                          <a href="javacript:" data-toggle="modal" data-target="#login">
-                            Sign In
-                          </a>
-                        </li>
-                        <li class="drop-menu-item">
-                          <a href="javacript:" data-toggle="modal" data-target="#signup">
-                            Sign Up
-                          </a>
-                        </li>
-                      </ul>
+                    </li>
+                    <li class="drop-menu-item">
+                      <a href="/post-test">
+                        Add a test
+                      </a>
+                    </li>
+                    <li class="drop-menu-item">
+                      <a href="/list-test">
+                        List of tests
+                      </a>
                     </li>
                     <li class="drop-menu-item dropdown">
                       <a class="dropdown-toggle gr-toggle-arrow" id="navbarDropdown26" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -183,8 +180,13 @@
                     </li>
                   </ul>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/ajouter-reclamation">File a claim</a>
+                <li *ngIf="isAdmin" class="nav-item">
+                  <a class="nav-link" href="/admin">Admin</a>
+                </li>
+            
+                <!-- Show "File a Claim" if not admin -->
+                <li *ngIf="!isAdmin" class="nav-item">
+                  <a class="nav-link" href="/ajouter-reclamation">File a Claim</a>
                 </li>
               </ul>
             </div>
@@ -301,9 +303,9 @@
                     <label for="terms-check" class="gr-check-input d-flex  mr-3">
                       <input class="d-none" type="checkbox" id="terms-check">
                       <span class="checkbox mr-5"></span>
-                      <span class="font-size-3 mb-0 line-height-reset mb-1 d-block">Remember password</span>
+                      <span class="font-size-3 mb-0 line-height-reset mb-1 d-block" >Remember password</span>
                     </label>
-                    <a href="#" class="font-size-3 text-dodger line-height-reset">Forget Password</a>
+                    <a href="#" class="font-size-3 text-dodger line-height-reset"data-toggle="modal" data-target="#resetpass" data-dismiss="modal">Forget Password</a>
                   </div>
                   <div class="form-group mb-8">
                     <button class="btn btn-primary btn-medium w-100 rounded-5 text-uppercase">Log in </button>
@@ -476,6 +478,93 @@
     </div>
   </div>
 </div>
-
+<!-- resetpass Modal -->
+<div class="modal fade form-modal" id="resetpass" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog max-width-px-840 position-relative">
+    <button
+      type="button"
+      class="circle-32 btn-reset bg-white pos-abs-tr mt-n6 mr-lg-n6 focus-reset shadow-10"
+      data-dismiss="modal"
+    >
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="login-modal-main bg-white rounded-8 overflow-hidden">
+      <div class="row no-gutters">
+        <div class="col-lg-5 col-md-6">
+          <div class="pt-10 pb-6 pl-11 pr-12 bg-black-2 h-100 d-flex flex-column dark-mode-texts">
+            <!-- Sign Up Info -->
+            <div class="pb-9">
+              <h3 class="font-size-8 text-white line-height-reset pb-4 line-height-1p4">
+                Create a free account today
+              </h3>
+              <p class="mb-0 font-size-4 text-white">Create your account to continue and explore new jobs.</p>
+            </div>
+            <div class="border-top border-default-color-2 mt-auto">
+              <!-- Stats Section -->
+              <div class="d-flex mx-n9 pt-6 flex-xs-row flex-column">
+                <div class="pt-5 px-9">
+                  <h3 class="font-size-7 text-white">295</h3>
+                  <p class="font-size-3 text-white gr-opacity-5 line-height-1p4">New jobs posted today</p>
+                </div>
+                <div class="pt-5 px-9">
+                  <h3 class="font-size-7 text-white">14</h3>
+                  <p class="font-size-3 text-white gr-opacity-5 line-height-1p4">New companies registered</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sign Up Form -->
+        <div class="col-lg-7 col-md-6">
+          <div class="bg-white-2 h-100 px-11 pt-11 pb-7">
+            <div class="row">
+              <div class="col-4 col-xs-12">
+                <a href="#" class="font-size-4 font-weight-semibold position-relative text-white bg-allports h-px-48 flex-all-center w-100 px-6 rounded-5 mb-4"><i class="fab fa-linkedin pos-xs-abs-cl font-size-7 ml-xs-4"></i> <span class="d-none d-xs-block">Import from LinkedIn</span></a>
+              </div>
+              <div class="col-4 col-xs-12">
+                <a href="#" class="font-size-4 font-weight-semibold position-relative text-white bg-poppy h-px-48 flex-all-center w-100 px-6 rounded-5 mb-4"><i class="fab fa-google pos-xs-abs-cl font-size-7 ml-xs-4"></i> <span class="d-none d-xs-block">Import from Google</span></a>
+              </div>
+              <div class="col-4 col-xs-12">
+                <a href="#" class="font-size-4 font-weight-semibold position-relative text-white bg-marino h-px-48 flex-all-center w-100 px-6 rounded-5 mb-4"><i class="fab fa-facebook-square pos-xs-abs-cl font-size-7 ml-xs-4"></i> <span class="d-none d-xs-block">Import from Facebook</span></a>
+              </div>
+            </div>
+            <div class="or-devider">
+              <span class="font-size-3 line-height-reset">Or</span>
+            </div>           
+            <!-- Registration Form -->
+            <form [formGroup]="forgetPasswordForm" (ngSubmit)="requestPasswordReset()">
+                            
+              <div class="form-group">
+                <div class="group-img">
+                  <i class="feather-mail"></i>
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="example@gmail.com"
+                    formControlName="email"
+                    required
+                  />
+                </div>
+              </div>
+            
+            
+              <!-- Submit Button -->
+              <div class="form-group mb-8">
+                <button
+                  class="btn btn-primary btn-medium w-100 rounded-5 text-uppercase"
+                  type="submit"
+                >
+                  Reset Password<i class="feather-arrow-right-circle ms-2"></i>
+                </button>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- Header start end -->
 </div>

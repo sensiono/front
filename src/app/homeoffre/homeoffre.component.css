@@ -1,0 +1,19 @@
+.excel-icon {
+    color: green;
+  }
+  .large-button {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+  .pdf-icon {
+    color: red;
+  }
+  .btn-grey {
+    background-color: #cccccc; /* Grey background */
+    color: #ffffff; /* White text */
+    border: none; /* No border */
+}
+
+.btn-grey:hover {
+    background-color: #999999; /* Darker grey background on hover */
+}

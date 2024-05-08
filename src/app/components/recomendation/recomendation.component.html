@@ -1,0 +1,26 @@
+<!-- recomendation.component.html -->
+<app-adminheader></app-adminheader>
+<app-adminsidebar></app-adminsidebar>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+  <div class="recommendation-container" *ngIf="books.length > 0; else loadingTemplate">
+    <h2 class="recommendation-heading">Recommended Books</h2>
+    <div class="book-list">
+      <div class="book-item" *ngFor="let book of books">
+        <div class="book-details">
+          <p class="book-title">{{ book.title }}</p>
+          <p class="book-author">By: {{ book.authorName }}</p>
+          <!-- Add other book details as needed -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loadingTemplate>
+    <p class="loading-message">Loading...</p>
+  </ng-template>
+</div>

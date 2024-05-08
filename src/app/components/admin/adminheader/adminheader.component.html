@@ -8,7 +8,9 @@
         <div class="brand-logo">
           <a href="index.html">
             <!-- light version logo (logo must be black)-->
-            <img src="assets/image/kh.png" alt="" class="light-version-logo default-logo" style="width: 100px; height: auto; margin-left: -130px;">
+            <img src="assets/image/kh.png" alt="" class="light-version-logo default-logo" style="width: 100px; height: auto;margin-left: -50px;"> 
+            <!-- Dark version logo (logo must be White)-->
+            <img src="assets/image/logo-main-white.png" alt="" class="dark-version-logo">
           </a>
         </div>
         <div class="collapse navbar-collapse" id="mobile-menu">
@@ -130,8 +132,8 @@
                     </ul>
                   </li>
                   <li class="drop-menu-item">
-                    <a href="company-profile.html">
-                      Company Profile
+                    <a href="/">
+                      Reclamations
                     </a>
                   </li>
                   <li class="drop-menu-item dropdown">
@@ -173,15 +175,15 @@
                           Pricing page
                         </a>
                       </li>
-                      <li class="drop-menu-item">
-                        <a href="contact.html">Contact</a>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="navigateToAddReclamation($event)">File a claim</a>
                       </li>
                     </ul>
                   </li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Support</a>
+                <a class="nav-link" href="/ajouter-reclamation">File a claim</a>
               </li>
             </ul>
           </div>
@@ -189,21 +191,13 @@
             <i class="gr-cross-icon"></i>
           </button>
         </div>
-
-        <!-- Notification Icon -->
-    <div class="notification-icon">
-      <i class="fas fa-bell" (click)="viewNotifications()"></i> <!-- Icon for notifications -->
-      <span *ngIf="unreadNotificationCount > 0" class="notification-badge">{{ unreadNotificationCount }}</span> <!-- Badge with unread count -->
-    </div>
-
         <!-- Check if the user is connected -->
     <div class="header-btns header-btn-devider ml-auto pr-2 ml-lg-6 d-none d-xs-flex">
       <div *ngIf="userConnected; else elseBlock">
-        
-        <span>{{ decodedJwtData?.sub }}</span> <!-- Display logged-in user's name -->
         <button class="btn btn-primary text-uppercase font-size-3" (click)="logout()">
           Logout
         </button>
+        <span>{{ decodedJwtData?.sub }}</span> <!-- Display logged-in user's name -->
       </div>
       <!-- Template for when the user is not logged in -->
       <ng-template #elseBlock>
@@ -377,16 +371,6 @@
           </div>           
           <!-- Registration Form -->
           <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
-
-            <!-- User Role Dropdown -->
-            <div class="form-group">
-            <label for="role">Register as:</label>
-              <select class="form-control" formControlName="role" required>
-               <option value="" disabled>Select a role</option>
-               <option value="Etudiant">Etudiant</option>
-               <option value="Entreprise">Entreprise</option>
-              </select>
-             </div>
             <!-- Add Firstname Field -->
             <div class="form-group">
               <div class="group-img">
@@ -441,28 +425,33 @@
                 <a href="#" class="show-password pos-abs-cr fas mr-6 text-black-2"></a>
               </div>
             </div>          
-            <!-- Confirm Password -->
+            <!-- Keep Existing Confirm Password Field -->
             <div class="form-group">
-                  <input
-            type="password"
-            class="form-control"
-            formControlName="confirmPassword"
-            placeholder="Re-enter Password"
-             required
-             />
-              </div>
-
-             <!-- Accept Terms -->
-             <div class="form-group">
-               <label>
+              <div class="position-relative">
                 <input
-                  type="checkbox"
-                   formControlName="acceptTerms"
+                  type="password"
+                  class="form-control"
+                  formControlName="confirmPassword"
+                  placeholder="Re-enter password"
                   required
-                  />
-                   I agree to the Terms & Conditions
-               </label>
-             </div>
+                />
+                <a href="#" class="show-password pos-abs-cr fas mr-6 text-black-2"></a>
+              </div>
+            </div>
+          
+            <!-- Keep Existing Accept Terms Checkbox -->
+            <div class="form-group d-flex flex-wrap justify-content-between mb-1">
+              <label class="gr-check-input d-flex mr-3">
+                <input
+                  class="d-none"
+                  type="checkbox"
+                  formControlName="acceptTerms"
+                  required
+                />
+                <span class="checkbox mr-5"></span>
+                <span class="font-size-3 mb-0 line-height-reset d-block">Agree to the Terms & Conditions</span>
+              </label>
+            </div>
           
             <!-- Submit Button -->
             <div class="form-group mb-8">

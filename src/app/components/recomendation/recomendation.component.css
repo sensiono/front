@@ -1,0 +1,66 @@
+/* recomendation.component.css */
+
+.container {
+    display: flex;
+    justify-content: center; /* Align horizontally in center */
+    align-items: center; /* Align vertically in center */
+    flex-direction: column; /* Align items vertically */
+    margin-top: 50px; /* Adjust as needed */
+  }
+  
+  .recommendation-container {
+    padding: 60px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 20px; /* Add space between container and sidebar */
+    max-width: 1200px; /* Limit container width */
+    overflow-x: auto; /* Add horizontal scroll if needed */
+    margin-left: 100px; /* Increase left margin for more spacing */
+  }
+  
+  .recommendation-heading {
+    font-size: 32px; /* Increase font size */
+    color: #333;
+    margin-bottom: 20px; /* Add space below heading */
+  }
+  
+  .book-list {
+    display: flex;
+    flex-wrap: nowrap; /* Do not wrap items */
+    overflow-x: auto; /* Add horizontal scroll if needed */
+    margin-bottom: -20px; /* Remove margin bottom to align with container */
+  }
+  
+  .book-item {
+    flex: 0 0 auto; /* Adjust item size */
+    margin-right: 40px; /* Add space between items */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px; /* Increase padding */
+    background-color: #fff;
+    min-width: 300px; /* Minimum item width */
+    max-width: 400px; /* Maximum item width */
+    margin-bottom: 20px; /* Add space between items */
+  }
+  
+  .book-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .book-title {
+    font-weight: bold;
+    font-size: 18px; /* Increase font size */
+    margin-bottom: 10px; /* Add space below title */
+  }
+  
+  .book-author {
+    color: #666;
+    font-size: 16px; /* Increase font size */
+  }
+  
+  .loading-message {
+    font-style: italic;
+    color: #999;
+  }
+  

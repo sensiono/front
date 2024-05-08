@@ -1,0 +1,37 @@
+<app-header></app-header>
+
+<div class="container" style="padding: 50px 0 100px;"></div>
+
+<!-- Form Container -->
+<div class="container" style="padding: 10px 0;">
+  <!-- Section Heading -->
+  <h2 class="font-size-6 mb-4 text-center text-primary"></h2>
+
+  <div class="row">
+    <!-- Utilisation d'une grille Bootstrap -->
+    <div class="col-md-6" *ngFor="let offre of displayedOffres">
+      <div class="card mb-3">
+        <div class="card-body">
+          <!-- Informations sur l'offre -->
+          <h3 class="card-title mb-3">{{ offre.titre }}</h3>
+          <p class="card-text mb-2">Type d'offre : {{ offre.typeOffre }}</p>
+          <p class="card-text mb-2">Description : {{ offre.description }}</p>
+          <p class="card-text mb-2">Compétences requises : {{ offre.competenceRequise }}</p>
+          <p class="card-text mb-2">Durée : {{ offre.duree }}</p>
+          <p class="card-text mb-2">Rémunération : {{ offre.remuneration }}</p>
+
+          <!-- Boutons d'action -->
+          <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-primary" (click)="generateEvaluation(offre)">Générer l'évaluation</button>
+            <button type="button" class="btn btn-secondary" (click)="calculateScores(offre)">Calculer le score</button>
+            <button type="button" class="btn btn-primary" (click)="selectOffre(offre)">Sélectionner</button>
+            <button *ngIf="selectedOffre && selectedAutreOffre && (offre === selectedOffre || offre === selectedAutreOffre)"
+              class="btn btn-primary" (click)="compareOffres(selectedOffre!, selectedAutreOffre!)">Comparer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

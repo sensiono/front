@@ -1,0 +1,14 @@
+/* Ajout de styles CSS */
+.btn-primary,
+.btn-secondary {
+  color: #fff;
+  background-color: rgba(108, 117, 125, 0.5); /* Gris transparent */
+  border-color: rgba(108, 117, 125, 0.5); /* Gris transparent */
+  margin-right: 10px; /* Ajout d'espace entre les boutons */
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  background-color: rgba(108, 117, 125, 0.7); /* Gris transparent avec une teinte légèrement plus foncée au survol */
+  border-color: rgba(108, 117, 125, 0.7); /* Gris transparent avec une teinte légèrement plus foncée au survol */
+}

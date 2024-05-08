@@ -1,14 +1,16 @@
-export enum ERole {
+export enum Role {
     ROLE_USER = 'Etudiant',
     ROLE_ADMIN = 'Admin',
-    ROLE_ENTREPRISE = 'Entreprise',
-
+    ETUDiant = "ETUDiant",
 
 }
-export class Role {
+/*
+export class ERole {
 
     id?: number;
     name?: ERole;
 
 
 }
+
+*/
